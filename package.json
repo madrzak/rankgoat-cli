@@ -1,0 +1,41 @@
+{
+  "name": "rankgoat",
+  "version": "0.1.0",
+  "description": "Official command-line interface for RankGoat — manage your content plan, posts, backlinks and SEO data from the terminal.",
+  "type": "module",
+  "bin": {
+    "rankgoat": "./bin/rankgoat.js"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node bin/rankgoat.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "rankgoat",
+    "seo",
+    "backlinks",
+    "cli",
+    "content",
+    "blogging",
+    "link-building"
+  ],
+  "homepage": "https://rankgoat.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madrzak/rankgoat-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/madrzak/rankgoat-cli/issues"
+  },
+  "author": "RedStudio (https://rankgoat.app)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
+}
