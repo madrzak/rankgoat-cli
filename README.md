@@ -1,6 +1,6 @@
 # RankGoat CLI
 
-The official command-line interface for **[RankGoat](https://rankgoat.app)** — the SEO backlink exchange that writes and publishes done-for-you blog posts with real dofollow links between member sites.
+The official command-line interface for **[RankGoat](https://rankgoat.app)**, the SEO backlink exchange that writes and publishes done-for-you blog posts with real dofollow links between member sites.
 
 Manage your content plan, generate posts, approve drafts, and read your backlink and SEO data straight from the terminal or a CI pipeline. Built on the public [RankGoat API](https://rankgoat.app/docs/api).
 
@@ -29,7 +29,7 @@ Create an API key at **[rankgoat.app/app/settings#api](https://rankgoat.app/app/
 rankgoat auth login rg_live_xxxxxxxx
 ```
 
-The key is stored in `~/.rankgoat/config.json` (owner-readable only). Alternatively set `RANKGOAT_API_KEY` in your environment, or pass `--api-key` on any command — handy for CI.
+The key is stored in `~/.rankgoat/config.json` (owner-readable only). Alternatively set `RANKGOAT_API_KEY` in your environment, or pass `--api-key` on any command, handy for CI.
 
 ```bash
 export RANKGOAT_API_KEY=rg_live_xxxxxxxx

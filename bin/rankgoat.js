@@ -43,7 +43,7 @@ const OPTIONS = {
   html: { type: "boolean" },
 };
 
-const USAGE = `${c.bold("rankgoat")} — official CLI for RankGoat (https://rankgoat.app)
+const USAGE = `${c.bold("rankgoat")} - official CLI for RankGoat (https://rankgoat.app)
 
 Usage: rankgoat <command> [args] [options]
 

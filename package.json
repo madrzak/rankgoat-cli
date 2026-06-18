@@ -1,7 +1,7 @@
 {
   "name": "rankgoat",
   "version": "0.1.0",
-  "description": "Official command-line interface for RankGoat — manage your content plan, posts, backlinks and SEO data from the terminal.",
+  "description": "Official command-line interface for RankGoat. Manage your content plan, posts, backlinks and SEO data from the terminal.",
   "type": "module",
   "bin": {
     "rankgoat": "./bin/rankgoat.js"

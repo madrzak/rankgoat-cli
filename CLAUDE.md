@@ -1,6 +1,6 @@
-# CLAUDE.md — apps/cli
+# CLAUDE.md - apps/cli
 
-The official open-source RankGoat CLI (npm package `rankgoat`). It's a thin client over the public JSON API at `/api/v1` (defined in `apps/server/src/controllers/api/*` and documented at `/docs/api`). Published to npm and mirrored to a public GitHub repo — partly a real product surface, partly an SEO/DR play (README links back to rankgoat.app).
+The official open-source RankGoat CLI (npm package `rankgoat`). It's a thin client over the public JSON API at `/api/v1` (defined in `apps/server/src/controllers/api/*` and documented at `/docs/api`). Published to npm and mirrored to a public GitHub repo, partly a real product surface, partly an SEO/DR play (README links back to rankgoat.app).
 
 ## Rules
 
@@ -15,7 +15,7 @@ The official open-source RankGoat CLI (npm package `rankgoat`). It's a thin clie
 bin/rankgoat.js        entry: one parseArgs schema (all flags), dispatch positional[0] → command module, central error catch
 lib/config.js          key/base-URL resolution (flag > env > ~/.rankgoat/config.json > default) + the only writer
 lib/client.js          fetch wrapper; success body as-is, { error: {code,message} } → thrown ApiError
-lib/output.js          zero-dep ANSI colors, table(), kv(), status() — all human output goes through here; --json bypasses it
+lib/output.js          zero-dep ANSI colors, table(), kv(), status(). All human output goes through here; --json bypasses it
 lib/poll.js            waitForJob(): poll /jobs until status !== "running"
 lib/commands/*.js      one module per top-level command; export default async run(args, ctx). ctx = { flags, json, getClient() }
 ```
