@@ -73,7 +73,7 @@ Commands:
   posts approve <postId>            Approve a drafted post for publishing
   backlinks <siteId>                Show the inbound + outbound link graph
   mentions <siteId>                 Show brand mentions received and given
-  seo onpage|sitemap|authority|gsc <siteId>
+  seo onpage|sitemap|authority|gsc|equity|flywheel <siteId>
                                     Read SEO data the platform tracks
   hubs list <siteId>                List content hubs (topic clusters)
   hubs add <siteId> --name <n>      Create a hub (--keywords "a, b" --priority high)
