@@ -78,6 +78,7 @@ rankgoat posts approve 456                          # approve a draft for publis
 
 ```bash
 rankgoat backlinks 123                              # inbound + outbound link graph
+rankgoat mentions 123                               # brand mentions received + given
 rankgoat seo authority 123                          # Domain Rating over time
 rankgoat seo onpage 123
 rankgoat seo sitemap 123
@@ -141,7 +142,7 @@ Exit code is non-zero on any API or usage error, so it composes cleanly in CI.
 
 The CLI is built to be driven by agents: structured JSON on every command, env-var auth, and non-zero exits on failure. Two ways to plug in:
 
-**MCP server.** `rankgoat mcp` runs a Model Context Protocol server on stdio exposing all 31 capabilities (plan, generate, approve, backlinks, DR, GSC, sitemap, hubs, features) as typed tools:
+**MCP server.** `rankgoat mcp` runs a Model Context Protocol server on stdio exposing all 32 capabilities (plan, generate, approve, backlinks, mentions, DR, GSC, sitemap, hubs, features) as typed tools:
 
 ```bash
 claude mcp add rankgoat -e RANKGOAT_API_KEY=rg_live_... -- npx -y rankgoat mcp

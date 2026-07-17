@@ -1,6 +1,6 @@
 {
   "name": "rankgoat",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Official command-line interface and MCP server for RankGoat. Manage your content plan, posts, backlinks and SEO data from the terminal, CI, or any AI agent.",
   "type": "module",
   "bin": {

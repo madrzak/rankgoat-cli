@@ -39,6 +39,7 @@ rankgoat sites credits <siteId> --json
 
 ```bash
 rankgoat backlinks <siteId> --json         # inbound/outbound dofollow link graph
+rankgoat mentions <siteId> --json          # brand mentions (the GEO half of placements)
 rankgoat seo authority <siteId> --json     # Domain Rating history (weekly)
 rankgoat seo onpage <siteId> --json        # on-page crawl findings
 rankgoat seo sitemap <siteId> --json       # sitemap audit, broken URLs
@@ -83,7 +84,7 @@ rankgoat jobs <kind> <target> --wait --json
 ## MCP alternative
 
 If your runtime speaks Model Context Protocol instead of shell, the same
-capabilities are available as 31 typed MCP tools:
+capabilities are available as 32 typed MCP tools:
 
 ```bash
 claude mcp add rankgoat -e RANKGOAT_API_KEY=rg_live_... -- npx -y rankgoat mcp

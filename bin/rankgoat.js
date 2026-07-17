@@ -17,6 +17,7 @@ const COMMANDS = {
   plan: () => import("../lib/commands/plan.js"),
   posts: () => import("../lib/commands/posts.js"),
   backlinks: () => import("../lib/commands/backlinks.js"),
+  mentions: () => import("../lib/commands/mentions.js"),
   seo: () => import("../lib/commands/seo.js"),
   hubs: () => import("../lib/commands/hubs.js"),
   features: () => import("../lib/commands/features.js"),
@@ -71,6 +72,7 @@ Commands:
   posts get <postId> [--html]       Show one post (--html prints the body)
   posts approve <postId>            Approve a drafted post for publishing
   backlinks <siteId>                Show the inbound + outbound link graph
+  mentions <siteId>                 Show brand mentions received and given
   seo onpage|sitemap|authority|gsc <siteId>
                                     Read SEO data the platform tracks
   hubs list <siteId>                List content hubs (topic clusters)
