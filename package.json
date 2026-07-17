@@ -1,7 +1,7 @@
 {
   "name": "rankgoat",
-  "version": "0.1.0",
-  "description": "Official command-line interface for RankGoat. Manage your content plan, posts, backlinks and SEO data from the terminal.",
+  "version": "0.3.0",
+  "description": "Official command-line interface and MCP server for RankGoat. Manage your content plan, posts, backlinks and SEO data from the terminal, CI, or any AI agent.",
   "type": "module",
   "bin": {
     "rankgoat": "./bin/rankgoat.js"
@@ -10,17 +10,21 @@
     "bin",
     "lib",
     "README.md",
+    "SKILL.md",
     "LICENSE"
   ],
   "scripts": {
     "start": "node bin/rankgoat.js",
-    "test": "node --test"
+    "test": "node --test --test-reporter=dot"
   },
   "keywords": [
     "rankgoat",
     "seo",
     "backlinks",
     "cli",
+    "mcp",
+    "mcp-server",
+    "ai-agent",
     "content",
     "blogging",
     "link-building"

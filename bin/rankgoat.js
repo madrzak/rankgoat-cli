@@ -18,7 +18,10 @@ const COMMANDS = {
   posts: () => import("../lib/commands/posts.js"),
   backlinks: () => import("../lib/commands/backlinks.js"),
   seo: () => import("../lib/commands/seo.js"),
+  hubs: () => import("../lib/commands/hubs.js"),
+  features: () => import("../lib/commands/features.js"),
   jobs: () => import("../lib/commands/jobs.js"),
+  mcp: () => import("../lib/commands/mcp.js"),
 };
 
 // One schema for parseArgs. Unknown flags would otherwise throw, so every flag
@@ -41,6 +44,11 @@ const OPTIONS = {
   date: { type: "string" },
   status: { type: "string" },
   html: { type: "boolean" },
+  hub: { type: "string" },
+  name: { type: "string" },
+  description: { type: "string" },
+  keywords: { type: "string" },
+  priority: { type: "string" },
 };
 
 const USAGE = `${c.bold("rankgoat")} - official CLI for RankGoat (https://rankgoat.app)
@@ -63,9 +71,19 @@ Commands:
   posts get <postId> [--html]       Show one post (--html prints the body)
   posts approve <postId>            Approve a drafted post for publishing
   backlinks <siteId>                Show the inbound + outbound link graph
-  seo onpage|sitemap|authority|gsc|hubs <siteId>
+  seo onpage|sitemap|authority|gsc <siteId>
                                     Read SEO data the platform tracks
+  hubs list <siteId>                List content hubs (topic clusters)
+  hubs add <siteId> --name <n>      Create a hub (--keywords "a, b" --priority high)
+  hubs edit <hubId> [--name ...]    Edit a hub
+  hubs archive|restore <hubId>      Retire / reactivate a hub
+  features list <siteId>            List product features (ground content generation)
+  features add <siteId> --name <n>  Add a feature (--description ...)
+  features edit <featureId>         Edit a feature
+  features archive|restore <featureId>
+                                    Retire / reactivate a feature
   jobs <kind> <target> [--wait]     Poll an async job
+  mcp                               Run the MCP server on stdio (for AI agents)
 
 Global options:
   --api-key <key>   Use this key (overrides env + saved config)
@@ -123,6 +141,7 @@ async function main() {
   const ctx = {
     flags,
     json: !!values.json,
+    version: version(),
     getClient: () => makeClient({ apiKey: flags.apiKey, apiUrl: flags.apiUrl }),
   };
 

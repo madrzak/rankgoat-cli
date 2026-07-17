@@ -23,11 +23,16 @@ test("resolveSettings: default base URL and trailing-slash strip", () => {
 
 test("makeClient: throws when no key is available", () => {
   const prev = process.env.RANKGOAT_API_KEY;
+  const prevDir = process.env.RANKGOAT_CONFIG_DIR;
   delete process.env.RANKGOAT_API_KEY;
+  // Point the config dir somewhere empty so a real ~/.rankgoat key can't leak in.
+  process.env.RANKGOAT_CONFIG_DIR = "/nonexistent/rankgoat-test";
   try {
     assert.throws(() => makeClient({ apiUrl: "https://x.test/api/v1" }), (e) => e instanceof ApiError && e.code === "no_api_key");
   } finally {
     if (prev !== undefined) process.env.RANKGOAT_API_KEY = prev;
+    if (prevDir === undefined) delete process.env.RANKGOAT_CONFIG_DIR;
+    else process.env.RANKGOAT_CONFIG_DIR = prevDir;
   }
 });
 

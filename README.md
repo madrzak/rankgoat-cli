@@ -58,7 +58,7 @@ The monthly plan is a calendar of briefs the AI turns into posts.
 ```bash
 rankgoat plan list 123 --month 2026-06
 rankgoat plan add 123 --auto                       # let AI plan a brief (async)
-rankgoat plan add 123 --title "Notion vs Obsidian" --keyword "notion alternatives" --type comparison
+rankgoat plan add 123 --title "Notion vs Obsidian" --keyword "notion alternatives" --type comparison --hub 5
 rankgoat plan edit 789 --title "Notion vs Obsidian (2026)" --type guide
 rankgoat plan schedule 789 2026-06-22
 rankgoat plan archive 789
@@ -82,7 +82,30 @@ rankgoat seo authority 123                          # Domain Rating over time
 rankgoat seo onpage 123
 rankgoat seo sitemap 123
 rankgoat seo gsc 123                                # Google Search Console performance
-rankgoat seo hubs 123
+```
+
+### Content hubs
+
+Topic clusters the monthly planner draws briefs from, weighted by priority.
+
+```bash
+rankgoat hubs list 123
+rankgoat hubs add 123 --name "AI note-taking" --keywords "ai notes, ai note app" --priority high
+rankgoat hubs edit 5 --priority low
+rankgoat hubs archive 5                             # the planner stops drawing from it
+rankgoat hubs restore 5
+```
+
+### Product features
+
+Your product's real capabilities. They ground content generation, so posts never invent features the product does not have.
+
+```bash
+rankgoat features list 123
+rankgoat features add 123 --name "Offline sync" --description "Notes sync without a connection"
+rankgoat features edit 7 --description "Now with conflict resolution"
+rankgoat features archive 7                         # new posts stop mentioning it
+rankgoat features restore 7
 ```
 
 ### Jobs
@@ -113,6 +136,34 @@ rankgoat sites --json | jq '.sites[] | select(.status=="active") | .domain'
 ```
 
 Exit code is non-zero on any API or usage error, so it composes cleanly in CI.
+
+## For AI agents
+
+The CLI is built to be driven by agents: structured JSON on every command, env-var auth, and non-zero exits on failure. Two ways to plug in:
+
+**MCP server.** `rankgoat mcp` runs a Model Context Protocol server on stdio exposing all 31 capabilities (plan, generate, approve, backlinks, DR, GSC, sitemap, hubs, features) as typed tools:
+
+```bash
+claude mcp add rankgoat -e RANKGOAT_API_KEY=rg_live_... -- npx -y rankgoat mcp
+```
+
+Or in any MCP client config:
+
+```json
+{
+  "mcpServers": {
+    "rankgoat": {
+      "command": "npx",
+      "args": ["-y", "rankgoat", "mcp"],
+      "env": { "RANKGOAT_API_KEY": "rg_live_..." }
+    }
+  }
+}
+```
+
+**Shell + SKILL.md.** Agents that run shell commands can use the CLI directly; the bundled [SKILL.md](./SKILL.md) teaches them the workflows, including which calls spend credits and where to keep a human in the loop.
+
+More at [rankgoat.app/agent](https://rankgoat.app/agent).
 
 ## How RankGoat works
 

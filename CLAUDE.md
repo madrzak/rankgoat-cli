@@ -1,6 +1,6 @@
 # CLAUDE.md - apps/cli
 
-The official open-source RankGoat CLI (npm package `rankgoat`). It's a thin client over the public JSON API at `/api/v1` (defined in `apps/server/src/controllers/api/*` and documented at `/docs/api`). Published to npm and mirrored to a public GitHub repo, partly a real product surface, partly an SEO/DR play (README links back to rankgoat.app).
+The official open-source RankGoat CLI (npm package `rankgoat`). It's a thin client over the public JSON API at `/api/v1` (defined in `apps/server/src/controllers/api/*` and documented at `/docs/api`). Published to npm and mirrored to a public GitHub repo, partly a real product surface, partly an SEO/DR play (README links back to rankgoat.app). Also the agent surface: `rankgoat mcp` runs an MCP server on stdio, and the bundled SKILL.md teaches shell-driving agents the workflows (both marketed at rankgoat.app/agent).
 
 ## Rules
 
@@ -17,7 +17,8 @@ lib/config.js          key/base-URL resolution (flag > env > ~/.rankgoat/config.
 lib/client.js          fetch wrapper; success body as-is, { error: {code,message} } → thrown ApiError
 lib/output.js          zero-dep ANSI colors, table(), kv(), status(). All human output goes through here; --json bypasses it
 lib/poll.js            waitForJob(): poll /jobs until status !== "running"
-lib/commands/*.js      one module per top-level command; export default async run(args, ctx). ctx = { flags, json, getClient() }
+lib/mcp.js             zero-dep MCP server (JSON-RPC over stdio): TOOLS table maps tool name → API call; createMcpServer() is transport-free for tests
+lib/commands/*.js      one module per top-level command; export default async run(args, ctx). ctx = { flags, json, version, getClient() }
 ```
 
 ## Commands
